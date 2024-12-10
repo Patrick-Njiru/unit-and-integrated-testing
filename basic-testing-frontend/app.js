@@ -9,6 +9,7 @@ import { transformToNumber } from './src/util/numbers.js';
 const form = document.querySelector('form');
 const output = document.getElementById('result');
 
+// this cannot be our unit because it has other functions(units) that are being called inside it.
 function formSubmitHandler(event) {
   event.preventDefault();
   const formData = new FormData(form);
