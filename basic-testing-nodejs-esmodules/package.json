@@ -1,19 +1,20 @@
 {
-  "name": "basic-testing-nodejs",
-  "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
-  "type": "module",
-  "scripts": {
-    "test": "vitest"
-  },
-  "keywords": [],
-  "author": "Maximilian Schwarzmüller",
-  "license": "ISC",
-  "dependencies": {
-    "express": "^4.17.3"
-  },
-  "devDependencies": {
-    "vitest": "^2.1.8"
-  }
+	"name": "basic-testing-nodejs",
+	"version": "1.0.0",
+	"description": "",
+	"main": "app.js",
+	"type": "module",
+	"scripts": {
+		"test": "vitest --run --reporter verbose",
+		"test:watch": "vitest"
+	},
+	"keywords": [],
+	"author": "Maximilian Schwarzmüller",
+	"license": "ISC",
+	"dependencies": {
+		"express": "^4.17.3"
+	},
+	"devDependencies": {
+		"vitest": "^2.1.8"
+	}
 }
