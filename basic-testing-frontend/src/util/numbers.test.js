@@ -17,7 +17,7 @@ it("should return a negative result if the input is negative", () => {
 it("should throw an error if no input is provided", () => {
 	const result = () => transformToNumber()
 
-	// this test will fail/pass if the thrown error contains the woords 'No input provided'
+	// this test will fail/pass if the thrown error contains the woods 'No input provided'
 	expect(result).toThrow(/No input provided/)
 })
 

@@ -3,7 +3,7 @@ import { validateNumber, validateStringNotEmpty } from "./validation"
 
 // Test Suites help in a scenario like this where a component/file has more than one unit that you are testing for. We use 'describe' for this
 
-// You can event nest test suites for more complicated situations like when you have nested functions/units
+// You can even nest test suites for more complicated situations like when you have nested functions/units
 
 // Test Suite 1
 describe("validateStringNotEmpty()", () => {
