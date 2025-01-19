@@ -1,3 +1,6 @@
+import { cleanNumbers, transformToNumber } from "./util/numbers"
+import { validateNumber, validateStringNotEmpty } from "./util/validation"
+
 export function add(numbers) {
 	if (!numbers) {
 		throw new Error("no value provided")
@@ -12,6 +15,19 @@ export function add(numbers) {
 		}
 		return sum
 	}
+}
+
+export const calculateResult = (numberValues) => {
+	let result = ""
+
+	try {
+		const cleanedNumbers = cleanNumbers(numberValues)
+		result = add(cleanedNumbers).toString()
+	} catch (error) {
+		result = error.message
+	}
+
+	return result
 }
 
 // this is our unit that we want to test.

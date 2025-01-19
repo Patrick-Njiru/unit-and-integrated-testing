@@ -1,14 +1,15 @@
 # Unit and Integration Tests Using Vitest
 
-## Installation
+## Installation & Setup
 
 ```
 npm install vitest ...
 
 ```
 
-## 
-## Basics
+<br/>
+
+## Testing Basics
 
 -   It is a recommended practice to adhere to the AAA pattern when writing tests
 
@@ -56,17 +57,18 @@ it("should yield NaN for non-transformable inputs", () => {
 })
 
 ```
-##
+
+<br/>
 
 ## Test Suites
 
-- test suites are used when you might have multiple tests in one file for different unit(functions) and need to be able to clearly distinguish them.
-- In order to do this, we use the term `describe` which is imported from vitest.
-- `describe` takes 2 arguments:
-- The name of the unit/function being described
-  - A function which contains all tests that are related to that unit.
-- Here is an example of 2 test suites in the same file.
-  
+-   test suites are used when you might have multiple tests in one file for different unit(functions) and need to be able to clearly distinguish them.
+-   In order to do this, we use the term `describe` which is imported from vitest.
+-   `describe` takes 2 arguments:
+-   The name of the unit/function being described
+    -   A function which contains all tests that are related to that unit.
+-   Here is an example of 2 test suites in the same file.
+
 ```
 // Test Suite 1
 describe("validateStringNotEmpty()", () => {
@@ -125,4 +127,54 @@ describe("validateNumber()", () => {
 })
 
 ```
+
 NB: You can even nest test suites for more complicated situations like when you have nested functions/units
+
+<br/>
+
+## Writing Good Tests
+
+-   Not everything needs to be tested.
+-   You should only test your code and do not test:
+
+    i. Code from third party packages/libraries/frameworks/apis e.g fetch() api
+
+    ii. Code that's built into the environment you are in. e.g document.GetElementsByTagName()
+
+-   Your test should only test one thing. One expected behaviour/result of one unit/function.
+-   Keep your tests simple/basic and focus on the essence of what you are testing. Avoid using complicated test cases
+-   Keep your number of assertions ('expects') low.
+
+### Only Test One Thing
+
+-   Try to be as granular as possible.
+-   For example, to validate an input string you can create separate tests for the following scenarios:
+    1. Input is empty
+    2. Input has enough strings characters
+
+### Code Coverage
+
+-   Write tests for the majority of your code to achieve good coverage.
+-   There are some parts of the code that you don't need to test like units that incorporates/calls other functions that have already been tested.
+-   You can use tools like <a href="https://vitest.dev/guide/features.html#coverage">https://vitest.dev/guide/features.html#coverage</a> to measure the coverage.
+
+
+## Integration Tests
+- Integration tests are written when you need to test a function that uses other functions to achieve some result. Here is an example of such a function:
+  ```
+    const cleanNumbers = (numberValues) => {
+      const numbers = []
+
+      numberValues.forEach((numberInput) => {
+        validateStringNotEmpty(numberInput)
+        const number = transformToNumber(numberInput)
+        validateNumber(number)
+        numbers.push(number)
+      })
+
+      return numbers
+    }
+  ```
+- In the above case, validateStringNotEmpty, transformToNumber and validateNumber are other functions/units called inside our main one.
+
+ - `NOTE`: Integration tests are important because you can write good unit tests for the individual functions but fail to achieve the desired behavior due to improper integration in the main function - like calling the validation functions in the wrong order or passing them the wrong arguments.

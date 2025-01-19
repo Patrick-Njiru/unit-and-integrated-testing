@@ -1,19 +1,25 @@
-function extractResultQueryParam(req) {
-  let result = req.query.result;
+export const extractResultQueryParam = (req) => {
+	let result = req.query.result
 
-  if (!result) {
-    result = 'no-calc';
-  }
+	if (!result) {
+		result = "no-calc"
+	}
 
-  return result;
+	return result
 }
 
 function extractNumbers(req) {
-  const num1Input = req.body.num1;
-  const num2Input = req.body.num2;
+	const num1Input = req.body.num1
+	const num2Input = req.body.num2
 
-  return [num1Input, num2Input];
+	return [num1Input, num2Input]
 }
 
-exports.extractNumbers = extractNumbers;
-exports.extractResultQueryParam = extractResultQueryParam;
+export const extractEnteredNumberValues = (form) => {
+	const formData = new FormData(form)
+	const numberInputs = extractNumbers(formData)
+	return numberInputs
+}
+
+// exports.extractEnteredNumberValues = extractEnteredNumberValues
+// exports.extractResultQueryParam = extractResultQueryParam
